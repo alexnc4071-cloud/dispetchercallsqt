@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>500</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>500</width>
+    <height>400</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>900</width>
+    <height>500</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QGroupBox" name="groupBox_buttons_main_">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>330</width>
+        <height>300</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QGroupBox {
+    border: 1px solid rgb(144, 238, 144); 
+    border-radius: 5px;
+    margin-top: 10px;
+    padding: 5px;
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top center;
+    padding: 0 10px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(60, 179, 113); 
+    border-radius: 5px;
+}</string>
+      </property>
+      <property name="title">
+       <string>Действия</string>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="2" column="0">
+        <widget class="QPushButton" name="pushButton_connection_settings_">
+         <property name="maximumSize">
+          <size>
+           <width>700</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Чтобы обновить базу данных, метки и вызовы, вам нужно очистить данные и переподключиться к базе данных&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="toolTipDuration">
+          <number>-1</number>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+    background-color: rgb(60, 179, 113);
+    color: rgb(255, 255, 255);
+    border: 2px solid rgb(144, 238, 144);
+    border-radius: 5px;
+    padding: 5px;
+}
+QPushButton:hover {
+    background-color: rgb(50, 205, 50);
+}</string>
+         </property>
+         <property name="text">
+          <string>Настройки подключения к базе данных</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QPushButton" name="pushButton_window_dispatcher_">
+         <property name="minimumSize">
+          <size>
+           <width>50</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+    background-color: rgb(60, 179, 113);
+    color: rgb(255, 255, 255);
+    border: 2px solid rgb(144, 238, 144);
+    border-radius: 5px;
+    padding: 5px;
+}
+QPushButton:hover {
+    background-color: rgb(50, 205, 50);
+}</string>
+         </property>
+         <property name="text">
+          <string>Главное окно диспетчера</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QPushButton" name="pushButton_dispatcher_date_">
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+    background-color: rgb(60, 179, 113);
+    color: rgb(255, 255, 255);
+    border: 2px solid rgb(144, 238, 144);
+    border-radius: 5px;
+    padding: 5px;
+}
+QPushButton:hover {
+    background-color: rgb(50, 205, 50);
+}</string>
+         </property>
+         <property name="text">
+          <string>Данные диспетчера</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QPushButton" name="pushButton_start_simulator_">
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background-color: rgb(60, 179, 113);
+    color: rgb(255, 255, 255);
+    border: 2px solid rgb(144, 238, 144);
+    border-radius: 5px;
+    padding: 5px;
+}
+
+QPushButton:hover {
+    background-color: rgb(50, 205, 50);
+}</string>
+      </property>
+      <property name="text">
+       <string>Запустить симуляцию</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>26</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
