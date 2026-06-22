@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dispatcherdate</class>
+ <widget class="QWidget" name="Dispatcherdate">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>340</width>
+    <height>232</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>Авторизация для диспетчера</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QLabel" name="label_dispatcher_name_">
+     <property name="text">
+      <string>Имя</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignmentFlag::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QLineEdit" name="lineEdit_dispatcher_name_">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>35</height>
+      </size>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" colspan="2">
+    <widget class="QSplitter" name="splitter_2">
+     <property name="orientation">
+      <enum>Qt::Orientation::Vertical</enum>
+     </property>
+     <property name="handleWidth">
+      <number>20</number>
+     </property>
+     <widget class="QLabel" name="label_exist_name_">
+      <property name="text">
+       <string>Выбрать имя из списка</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="comboBox_dispatcher_name_">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>35</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QComboBox {
+    background-color: #444444;    / Тёмно-серый фон /
+    color: #eeeeee;               / Светлый текст /
+    border: 1px solid #222222;    / Ещё более тёмный бордер /
+    border-radius: 3px;
+    padding: 2px 6px;
+}
+
+QComboBox QAbstractItemView {
+    background: #2a2a2a;                / Фон выпадающего списка /
+    selection-background-color: #43ea4a; / Ярко-зелёный фон выделенного /
+    selection-color: #103d13;            / Тёмно-зелёный текст выделенного /
+    color: #eeeeee;                      / Светлый текст списка /
+}</string>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>16</width>
+        <height>16</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_enter_dispatcher_">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>35</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background-color: rgb(60, 179, 113);
+    color: rgb(255, 255, 255);
+    border: 2px solid rgb(144, 238, 144);
+    border-radius: 5px;
+    padding: 5px;
+}
+QPushButton:hover {
+    background-color: rgb(50, 205, 50);
+}</string>
+      </property>
+      <property name="text">
+       <string>Войти в систему</string>
+      </property>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
