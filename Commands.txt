@@ -1,0 +1,174 @@
+create table dispatchers
+(
+id SERIAL PRIMARY KEY,
+name VARCHAR(100)
+);
+
+create table calls (
+    id SERIAL PRIMARY KEY,
+    incident_type VARCHAR(50),
+    status VARCHAR(50),
+    incident_enum VARCHAR(50),
+    required_units INTEGER,
+    id_dispatcher INTEGER references dispatchers(id),
+    address VARCHAR(255),
+    priority VARCHAR(20),
+    region VARCHAR(150),
+    phone VARCHAR(70),
+    surname VARCHAR(150),     
+    distance_km DOUBLE PRECISION,
+    latitude DOUBLE PRECISION,
+    longitude DOUBLE PRECISION,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    resolved_at TIMESTAMP
+)
+
+create table brigades
+(
+id SERIAL primary KEY,
+type VARCHAR(50),
+status VARCHAR(50),
+number_of_staff INTEGER,
+surname_leader VARCHAR(100),
+surname_deputy_leader VARCHAR(100),
+surname_driver VARCHAR(100),
+number_car VARCHAR(50),
+start_time TIMESTAMP,
+end_time TIMESTAMP
+)
+create table brigades_on_call (
+    id SERIAL PRIMARY KEY,
+    id_call INTEGER references calls(id),
+    id_brigade INTEGER references brigades(id),
+    accept_time TIMESTAMP,
+    arrival_time TIMESTAMP,
+    finish_time TIMESTAMP,
+    status VARCHAR(50),
+    flag integer
+)
+
+
+CREATE OR REPLACE FUNCTION update_brigade_start_time(
+    brigade_id integer,
+    new_start timestamp
+)
+RETURNS void AS $$
+BEGIN
+    UPDATE brigades
+    SET start_time = new_start
+    WHERE id = brigade_id;
+END;
+$$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION update_brigade_end_time(
+    brigade_id integer,
+    new_start timestamp
+)
+RETURNS void AS $$
+BEGIN
+    UPDATE brigades
+    SET end_time = new_start
+    WHERE id = brigade_id;
+END;
+$$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION update_brigade_status(
+    brigade_id integer,
+    new_status varchar
+)
+RETURNS void AS $$
+BEGIN
+    UPDATE brigades
+    SET status = new_status
+    WHERE id = brigade_id;
+END;
+$$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION update_call_dispatcher_status(
+    call_id integer
+)
+RETURNS void AS $$
+BEGIN
+    UPDATE calls
+    SET id_dispatcher = NULL, 
+        status = 'Принят'
+    WHERE id = call_id;
+END;
+$$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION update_brigade_start_time_set_null(
+    brigade_id integer
+)
+RETURNS void AS $$
+BEGIN
+    UPDATE brigades
+    SET start_time = NULL
+    WHERE id = brigade_id;
+END;
+$$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION update_brigades_on_set_status(
+    _brigade_id integer,
+    stat varchar
+)
+RETURNS void AS $$
+BEGIN
+    UPDATE brigades_on_call
+    SET status = stat
+    WHERE id_brigade = _brigade_id
+    AND flag = 0;
+END
+$$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION update_brigades_on_set_flag(
+    _brigade_id integer, flag_ integer
+)
+RETURNS void AS $$
+BEGIN
+    UPDATE brigades_on_call
+    SET flag = flag_
+    WHERE id_brigade = _brigade_id AND flag = 0;
+END
+$$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION update_brigades_on_cancel_status(
+    _brigade_id integer,
+    stat varchar
+)
+RETURNS void AS $$
+BEGIN
+    UPDATE brigades_on_call
+    SET status = stat
+    WHERE id_brigade = _brigade_id
+    AND flag = 2;
+END
+$$ LANGUAGE plpgsql; 
+
+CREATE OR REPLACE FUNCTION update_call_status_timeout(
+    call_id integer
+)
+RETURNS void AS $$
+BEGIN
+    UPDATE calls
+    SET status = 'Не назначен'
+    WHERE id = call_id;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION update_call_dispatcher_statusEdited(
+    call_id integer
+)
+RETURNS void AS $$
+BEGIN
+    UPDATE calls
+    SET id_dispatcher = NULL
+    WHERE id = call_id;
+END;
+$$ LANGUAGE plpgsql;
