@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/">
+        <file>map.qml</file>
+        <file>Images/iconMain.png</file>
+        <file>Images/IconWarning.png</file>
+        <file>Images/iconMistake.png</file>
+        <file>Images/iconSign.png</file>
+        <file>Images/iconGalo4ka.png</file>
+        <file>Images/iconTimeout.png</file>
+    </qresource>
+</RCC>
